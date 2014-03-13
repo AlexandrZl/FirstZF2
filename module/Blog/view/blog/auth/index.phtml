@@ -1,0 +1,34 @@
+<?php
+$title = 'All users';
+$this->headTitle($title);
+?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php 
+if ($auth_user)
+{
+	echo "Welcome  ".$this->escapeHtml($auth_user->getEmail())." !";
+    ?>
+	<p>
+		<a href="<?php echo $this->url('auth', array('controller' => 'auth', 'action' => 'logout'));?>"><?php echo $this->translate('Logout'); ?></a>   
+    </p>
+    <?php
+}
+else 
+{
+	?>
+	<p>
+		<a href="<?php echo $this->url('auth', array('controller' => 'auth', 'action' => 'login'));?>"><?php echo $this->translate('Login'); ?></a>   
+    </p>
+    <?php
+}
+?>
+
+<hr />
+<table>
+<?php foreach ($users as $user) { ?>
+	<tr>
+		<td><?php echo $this->escapeHtml($user->getEmail());?></td>
+	</tr>
+<?php } ?>
+</table>

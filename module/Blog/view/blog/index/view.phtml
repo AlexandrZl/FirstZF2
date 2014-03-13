@@ -1,0 +1,7 @@
+<?php
+    print '<h1>' . $post['title'] . '</h1>';
+    print '<div>' . $post['text'] . '</div>';
+    print '<li>
+            <a href="' . $this->url('blog', array('action'=>'edit', 'id' => $post['id'])) . '">edit</a>,
+            <a href="' . $this->url('blog', array('action'=>'delete', 'id' => $post['id'])) . '">delete</a>
+          </li>';

@@ -1,0 +1,21 @@
+<?php
+$title = 'List of all posts';
+$this->headTitle($title);
+print $this->showMessages();
+?>
+<h2>
+<p>
+		<a href="<?php echo $this->url('blog', array('controller' => 'index', 'action' => 'add'));?>"><?php echo $this->translate('Add new blog'); ?></a>   
+</p>
+</h2>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<ul>
+<?php
+    foreach($this->posts as $post) 
+    {
+        print '<li>
+            <a href="' . $this->url('blog', array('action'=>'view', 'id' => $post['id'])) . '">' . $post['title'] . '</a>          
+              </li>';
+    }
+?>
+</ul>

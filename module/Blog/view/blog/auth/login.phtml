@@ -1,0 +1,12 @@
+<?php
+print $this->showMessages();
+$form = $this->form;
+$form->setAttribute('action', $this->url('auth', array('controller' => 'auth', 'action' => 'login')));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formRow($form->get('email'));
+echo $this->formRow($form->get('password'));
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
+?>
