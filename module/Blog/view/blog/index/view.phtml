@@ -1,7 +1,26 @@
 <?php
-    print '<h1>' . $post['title'] . '</h1>';
-    print '<div>' . $post['text'] . '</div>';
-    print '<li>
-            <a href="' . $this->url('blog', array('action'=>'edit', 'id' => $post['id'])) . '">edit</a>,
-            <a href="' . $this->url('blog', array('action'=>'delete', 'id' => $post['id'])) . '">delete</a>
-          </li>';
+print '<h1>' . $post['title'] . '</h1>';
+print '<div>' . $post['text'] . '</div>';
+print '<li>
+        <a href="' . $this->url('blog', array('action'=>'edit', 'id' => $post['id'])) . '">edit</a>,
+        <a href="' . $this->url('blog', array('action'=>'delete', 'id' => $post['id'])) . '">delete</a>
+      </li>';
+?>
+
+<h2><?php echo " All Comments" ?></h2>
+
+<?php 
+$form = $this->form;
+$form->setAttribute('action', $this->url('blog', array('action' => 'view', 'id' => $post['id'])));
+$form->prepare();
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('comment'));
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
+print $this->showMessages();
+foreach($this->comments as $comment) 
+{
+    print $comment['comment'].'<br>';
+}
+?>

@@ -4,6 +4,7 @@ namespace Blog\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Blog\Form\BlogForm;
+use Blog\Form\CommentForm;
 use Blog\Entity;
 
 class IndexController extends AbstractActionController
@@ -70,11 +71,43 @@ class IndexController extends AbstractActionController
             return $this->redirect()->toRoute('blog');
         }
 
+        $form = new CommentForm();
+        $form->get('submit')->setValue('Add Comment');
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $form->setData($request->getPost());
+
+            if ($form->isValid()) {
+                $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+                $comment = new \Blog\Entity\Comment();
+                $comment->exchangeArray($form->getData());
+                $objectManager->persist($comment);
+                $comment->setUserId($id);
+                $objectManager->flush();
+                $message = 'Blogpost succesfully saved!';
+                $this->flashMessenger()->addMessage($message);
+                return $this->redirect()->toRoute('blog', array('action' => 'view', 'id' => $id));
+            }
+            else {
+                $message = 'Error while saving blogpost';
+                $this->flashMessenger()->addErrorMessage($message);
+            }
+        }
+
         $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
         $post = $objectManager
             ->getRepository('\Blog\Entity\BlogPost')
             ->findOneBy(array('id' => $id));
+
+        $comments = $objectManager
+            ->getRepository('\Blog\Entity\Comment')
+            ->findBy(array('userId' => $id));
+
+        $comments_array = array();
+        foreach ($comments as $comment) {
+            $comments_array[] = $comment->getArrayCopy();
+        }
 
         if (!$post) {
             $this->flashMessenger()->addErrorMessage(sprintf('Blogpost with id %s doesn\'t exists', $id));
@@ -83,6 +116,8 @@ class IndexController extends AbstractActionController
 
         $view = new ViewModel(array(
             'post' => $post->getArrayCopy(),
+            'comments' => $comments_array,
+            'form' => $form,
         ));
 
         return $view;

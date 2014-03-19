@@ -7,9 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="posts")
+ * @ORM\Table(name="comment")
  */
-class BlogPost
+class Comment
 {
     /**
      * @var int
@@ -19,22 +19,17 @@ class BlogPost
      */
     protected $id;
 
-    /**
-     * @var string
-     * @ORM\Column(type="string", length=255, nullable=false)
-     */
-    protected $title;
-
-    /**
-     * @var text
-     * @ORM\Column(type="text")
-     */
-    protected $text;
-
-    /**
+     /**
      * @var int
      * @ORM\Column(type="integer")
      */
+    protected $userId;
+
+    /**
+     * @var string
+     * @ORM\Column(type="text")
+     */
+    protected $comment;
 
     /**
      * Get id.
@@ -58,48 +53,48 @@ class BlogPost
         $this->id = (int)$id;
     }
 
-    /**
-     * Get title.
+     /**
+     * Get user_id.
      *
-     * @return string
+     * @return int
      */
-    public function getTitle()
+    public function getUserId()
     {
-        return $this->title;
+        return $this->UserId;
     }
 
     /**
-     * Set title.
+     * Set user_id.
      *
-     * @param string $title
+     * @param int $UserId
      *
      * @return void
      */
-    public function setTitle($title)
+    public function setUserId($UserId)
     {
-        $this->title = $title;
+        $this->userId = (int)$UserId;
     }
 
     /**
-     * Get text.
+     * Get comment.
      *
      * @return string
      */
-    public function getText()
+    public function getComment()
     {
-        return $this->text;
+        return $this->comment;
     }
 
     /**
-     * Set text.
+     * Set comment.
      *
-     * @param string $text
+     * @param string $comment
      *
      * @return void
      */
-    public function setText($text)
+    public function setComment($comment)
     {
-        $this->text = $text;
+        $this->comment = $comment;
     }
 
     /**

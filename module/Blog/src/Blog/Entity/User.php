@@ -28,8 +28,8 @@ class User
     protected $password;
 
     /**
-     * @var string
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @var text
+     * @ORM\Column(type="text", length=255, nullable=false)
      */
     protected $email;
 
