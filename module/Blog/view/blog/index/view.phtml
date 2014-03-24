@@ -7,7 +7,7 @@ print '<li>
       </li>';
 ?>
 
-<h2><?php echo " All Comments" ?></h2>
+<h2><?php echo " Add new comment" ?></h2>
 
 <?php 
 $form = $this->form;
@@ -19,6 +19,24 @@ echo $this->formRow($form->get('comment'));
 echo $this->formSubmit($form->get('submit'));
 echo $this->form()->closeTag();
 print $this->showMessages();
+?>
+
+<script src="./js/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#submitbutton").click(function(){
+         $.ajax({
+             url: '<?php  $this->url('blog', array('controller'=>'index', 'action'=>'view')); ?>';,
+             type : 'POST',
+             data: '<?php $form ?>;',
+         }); 
+    });
+});
+</script>
+
+<h2><?php echo " All Comments" ?></h2>
+
+<?php
 foreach($this->comments as $comment) 
 {
     print $comment['comment'].'<br>';

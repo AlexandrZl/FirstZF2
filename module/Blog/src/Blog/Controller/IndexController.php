@@ -6,9 +6,18 @@ use Zend\View\Model\ViewModel;
 use Blog\Form\BlogForm;
 use Blog\Form\CommentForm;
 use Blog\Entity;
+use Blog\Form\CommentFilter;
 
 class IndexController extends AbstractActionController
 {
+
+    // public function init() {
+    //     if ($this->getRequest()->isXmlHttpRequest()) 
+    //     {
+    //         Zend_Controller_Action_HelperBroker::removeHelper('viewRenderer');
+    //     }
+    // }
+
 
     public function addAction()
     {
@@ -70,30 +79,40 @@ class IndexController extends AbstractActionController
             $this->flashMessenger()->addErrorMessage('Blogpost id doesn\'t set');
             return $this->redirect()->toRoute('blog');
         }
-
         $form = new CommentForm();
         $form->get('submit')->setValue('Add Comment');
         $request = $this->getRequest();
-        if ($request->isPost()) {
-            $form->setData($request->getPost());
-
-            if ($form->isValid()) {
-                $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-                $comment = new \Blog\Entity\Comment();
-                $comment->exchangeArray($form->getData());
-                $objectManager->persist($comment);
-                $comment->setUserId($id);
-                $objectManager->flush();
-                $message = 'Blogpost succesfully saved!';
-                $this->flashMessenger()->addMessage($message);
-                return $this->redirect()->toRoute('blog', array('action' => 'view', 'id' => $id));
+        if ($request->isPost()) 
+        {
+            if ($this->getRequest()->isXmlHttpRequest())
+            {
+                $form->setInputFilter(new CommentFilter($this->getServiceLocator()));
+                $form->setData($request->getPost());
+                if ($form->isValid())
+                {
+                    $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+                    $comment = new \Blog\Entity\Comment();
+                    $comment->exchangeArray($form->getData());
+                    $objectManager->persist($comment);
+                    $comment->setUserId($id);
+                    $objectManager->flush();
+                    $message = 'Blogpost succesfully saved!';
+                    $this->flashMessenger()->addMessage($message);
+                    return $this->redirect()->toRoute('blog', array('action' => 'view', 'id' => $id));
+                }
+                else
+                {
+                    $message = 'Error while saving blogpost';
+                    $this->flashMessenger()->addErrorMessage($message);
+                }
             }
-            else {
-                $message = 'Error while saving blogpost';
+            else
+            {
+                $message = 'This is not ajax request';
                 $this->flashMessenger()->addErrorMessage($message);
             }
         }
-
+        
         $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
         $post = $objectManager
