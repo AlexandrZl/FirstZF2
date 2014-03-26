@@ -79,39 +79,7 @@ class IndexController extends AbstractActionController
             $this->flashMessenger()->addErrorMessage('Blogpost id doesn\'t set');
             return $this->redirect()->toRoute('blog');
         }
-        $form = new CommentForm();
-        $form->get('submit')->setValue('Add Comment');
-        $request = $this->getRequest();
-        if ($request->isPost()) 
-        {
-            if ($this->getRequest()->isXmlHttpRequest())
-            {
-                $form->setInputFilter(new CommentFilter($this->getServiceLocator()));
-                $form->setData($request->getPost());
-                if ($form->isValid())
-                {
-                    $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-                    $comment = new \Blog\Entity\Comment();
-                    $comment->exchangeArray($form->getData());
-                    $objectManager->persist($comment);
-                    $comment->setUserId($id);
-                    $objectManager->flush();
-                    $message = 'Blogpost succesfully saved!';
-                    $this->flashMessenger()->addMessage($message);
-                    return $this->redirect()->toRoute('blog', array('action' => 'view', 'id' => $id));
-                }
-                else
-                {
-                    $message = 'Error while saving blogpost';
-                    $this->flashMessenger()->addErrorMessage($message);
-                }
-            }
-            else
-            {
-                $message = 'This is not ajax request';
-                $this->flashMessenger()->addErrorMessage($message);
-            }
-        }
+    
         
         $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
@@ -136,7 +104,6 @@ class IndexController extends AbstractActionController
         $view = new ViewModel(array(
             'post' => $post->getArrayCopy(),
             'comments' => $comments_array,
-            'form' => $form,
         ));
 
         return $view;

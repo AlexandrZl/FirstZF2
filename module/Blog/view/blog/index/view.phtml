@@ -9,29 +9,43 @@ print '<li>
 
 <h2><?php echo " Add new comment" ?></h2>
 
-<?php 
-$form = $this->form;
-$form->setAttribute('action', $this->url('blog', array('action' => 'view', 'id' => $post['id'])));
-$form->prepare();
-echo $this->form()->openTag($form);
-echo $this->formHidden($form->get('id'));
-echo $this->formRow($form->get('comment'));
-echo $this->formSubmit($form->get('submit'));
-echo $this->form()->closeTag();
-print $this->showMessages();
-?>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div id="status"></div>
+    <form method="post" action="ajax.php">
+      <label>Add ID:</label>
+      <p><input type="text" class="form-control" id="area_1" name="area_1" placeholder="id">
+      </input></p>
+      <label>Comment:</label>
+      <p><textarea class="input-xxlarge" id="area_2" name="area_2" >
+      </textarea></p>
+      <input class="btn" type="button" 
+      value="SEND" onclick="run_script()">
+    </form>
+  </div>
 
-<script src="./js/jquery.min.js"></script>
+<script src="http://yandex.st/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-    $("#submitbutton").click(function(){
-         $.ajax({
-             url: '<?php  $this->url('blog', array('controller'=>'index', 'action'=>'view')); ?>';,
-             type : 'POST',
-             data: '<?php $form ?>;',
-         }); 
-    });
-});
+function run_script() {
+  var $result = $("#status"); 
+
+  $.ajax({
+    type: "POST",
+    data: {
+      "area_1": $('#area_1').val(), 
+      "area_2": $('#area_2').val()
+    },
+    dataType: "html",
+    url: "ajax.php",
+    beforeSend: function() {
+      $result.html('<div class="alert">Wait...</div>');
+    },
+    success: function(data) {
+      $result.html(data);
+    },
+  });
+
+}
 </script>
 
 <h2><?php echo " All Comments" ?></h2>
