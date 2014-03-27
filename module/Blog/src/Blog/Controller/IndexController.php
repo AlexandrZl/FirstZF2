@@ -7,17 +7,10 @@ use Blog\Form\BlogForm;
 use Blog\Form\CommentForm;
 use Blog\Entity;
 use Blog\Form\CommentFilter;
+use Zend\View\Model\JsonModel;
 
 class IndexController extends AbstractActionController
 {
-
-    // public function init() {
-    //     if ($this->getRequest()->isXmlHttpRequest()) 
-    //     {
-    //         Zend_Controller_Action_HelperBroker::removeHelper('viewRenderer');
-    //     }
-    // }
-
 
     public function addAction()
     {
@@ -72,14 +65,16 @@ class IndexController extends AbstractActionController
 
     }
 
+    
     public function viewAction()
     {
+        $form = new CommentForm();
+        $form->get('submit')->setValue('Add Comment');
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
             $this->flashMessenger()->addErrorMessage('Blogpost id doesn\'t set');
             return $this->redirect()->toRoute('blog');
         }
-    
         
         $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
@@ -104,10 +99,12 @@ class IndexController extends AbstractActionController
         $view = new ViewModel(array(
             'post' => $post->getArrayCopy(),
             'comments' => $comments_array,
+            'form' => $form,
         ));
 
         return $view;
     }
+
 
     public function editAction()
     {

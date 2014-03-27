@@ -4,53 +4,34 @@ print '<div>' . $post['text'] . '</div>';
 print '<li>
         <a href="' . $this->url('blog', array('action'=>'edit', 'id' => $post['id'])) . '">edit</a>,
         <a href="' . $this->url('blog', array('action'=>'delete', 'id' => $post['id'])) . '">delete</a>
-      </li>';
+      </li>';    
 ?>
 
 <h2><?php echo " Add new comment" ?></h2>
+<?php
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('comment'));
+echo $this->formSubmit($form->get('submit'));
+?>
 
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div id="status"></div>
-    <form method="post" action="ajax.php">
-      <label>Add ID:</label>
-      <p><input type="text" class="form-control" id="area_1" name="area_1" placeholder="id">
-      </input></p>
-      <label>Comment:</label>
-      <p><textarea class="input-xxlarge" id="area_2" name="area_2" >
-      </textarea></p>
-      <input class="btn" type="button" 
-      value="SEND" onclick="run_script()">
-    </form>
-  </div>
-
-<script src="http://yandex.st/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script type="text/javascript">
-function run_script() {
-  var $result = $("#status"); 
-
-  $.ajax({
-    type: "POST",
-    data: {
-      "area_1": $('#area_1').val(), 
-      "area_2": $('#area_2').val()
-    },
-    dataType: "html",
-    url: "ajax.php",
-    beforeSend: function() {
-      $result.html('<div class="alert">Wait...</div>');
-    },
-    success: function(data) {
-      $result.html(data);
-    },
-  });
-
-}
+$(document).ready(function(){
+    $("#submitbutton").click(function(){
+        $.ajax({
+            url: '/ajax/addcomment',
+            type : 'POST',
+            data: {"data": $('#comment').val() },
+            dataType : "json",
+        });
+    })
+})
 </script>
 
 <h2><?php echo " All Comments" ?></h2>
 
 <?php
+echo $this->result;
 foreach($this->comments as $comment) 
 {
     print $comment['comment'].'<br>';

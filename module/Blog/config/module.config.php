@@ -40,6 +40,19 @@ return array(
                     ),
                 ),
             ),
+            'ajax' => array(
+                'type'    => 'segment',
+                    'options' => array(
+                    'route' => '/ajax/[:action]',
+                    'constraints' => array(
+                      'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Blog\Controller\Ajax',
+                        'action'     => 'addcomment',
+                    ),
+                ),
+            ),
         ),
     ),
     'db' => array(
@@ -68,7 +81,8 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Blog\Controller\Index' => 'Blog\Controller\IndexController',
-            'Blog\Controller\Auth'  => 'Blog\Controller\AuthController'
+            'Blog\Controller\Auth'  => 'Blog\Controller\AuthController',
+            'Blog\Controller\Ajax'  => 'Blog\Controller\AjaxController'
         ),
     ),
     'view_manager' => array(
@@ -86,14 +100,17 @@ return array(
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
+        'strategies' => array(
+            'ViewJsonStrategy',
+        ),
         'service_manager' => array(
-        'aliases' => array( 
-            'Zend\Authentication\AuthenticationService' => 'my_auth_service',
+            'aliases' => array( 
+                'Zend\Authentication\AuthenticationService' => 'my_auth_service',
+            ),
+            'invokables' => array(
+                'my_auth_service' => 'Zend\Authentication\AuthenticationService',
+            ),
         ),
-        'invokables' => array(
-            'my_auth_service' => 'Zend\Authentication\AuthenticationService',
-        ),
-    ),
     ),
     // Placeholder for console routes
     'console' => array(

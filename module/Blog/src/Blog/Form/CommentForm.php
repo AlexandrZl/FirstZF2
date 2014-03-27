@@ -19,6 +19,9 @@ class CommentForm extends Form
             'options' => array(
                 'label' => 'Comment',
             ),
+            'attributes' => array(
+                'id' => 'comment',
+            ),
         ));
         $this->add(array(
             'name' => 'submit',
