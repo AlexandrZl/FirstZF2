@@ -24,6 +24,7 @@ $(document).ready(function(){
             data: {"data": $('#comment').val() },
             dataType : "json",
         });
+        $("#response").load('/ajax/addcomment');
     })
 })
 </script>
@@ -31,9 +32,11 @@ $(document).ready(function(){
 <h2><?php echo " All Comments" ?></h2>
 
 <?php
-echo $this->result;
 foreach($this->comments as $comment) 
 {
     print $comment['comment'].'<br>';
 }
 ?>
+
+<div id = "response"></div>
+

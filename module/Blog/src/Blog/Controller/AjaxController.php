@@ -8,6 +8,13 @@ use Blog\Form\CommentForm;
 
 class AjaxController extends AbstractActionController
 {
+
+    public function init()
+    {
+        if ($this->getRequest()->isXmlHttpRequest()) {
+            Zend_Controller_Action_HelperBroker::removeHelper('viewRenderer');
+        }
+    }
     public function addcommentAction()
     {
         if ($this->request->isXmlHttpRequest()) 
@@ -24,16 +31,16 @@ class AjaxController extends AbstractActionController
                 mysqli_query($con,"INSERT INTO comment (comment, userId)
                 VALUES ( '$comment', 10)");
 
-                //$result = mysqli_query($con,"SELECT * FROM comment");
+                $result = mysqli_query($con,"SELECT * FROM comment");
                 mysqli_close($con);  
             }
 
         }
 
         $result = new JsonModel(array(
-                'some_parameter' => 'some value',
-                    'success'=>true,
-                ));
+        'test' => "Success send comment",
+            'success'=>true,
+        ));  
         return array(
             'result' => $result,
             );

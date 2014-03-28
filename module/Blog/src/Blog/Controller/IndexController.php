@@ -103,6 +103,8 @@ class IndexController extends AbstractActionController
         ));
 
         return $view;
+
+       
     }
 
 
