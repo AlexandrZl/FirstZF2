@@ -100,6 +100,7 @@ class IndexController extends AbstractActionController
             'post' => $post->getArrayCopy(),
             'comments' => $comments_array,
             'form' => $form,
+            'id_comment' => $id,
         ));
 
         return $view;

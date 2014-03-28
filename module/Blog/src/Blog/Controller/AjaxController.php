@@ -20,6 +20,7 @@ class AjaxController extends AbstractActionController
         if ($this->request->isXmlHttpRequest()) 
         {   
             $comment = $_POST['data'];
+            $id = $_POST['id'];
             if(isset($comment))
             {
                 $con=mysqli_connect("localhost","root","12345","blog");
@@ -29,7 +30,7 @@ class AjaxController extends AbstractActionController
                   }
 
                 mysqli_query($con,"INSERT INTO comment (comment, userId)
-                VALUES ( '$comment', 10)");
+                VALUES ( '$comment', '$id')");
 
                 $result = mysqli_query($con,"SELECT * FROM comment");
                 mysqli_close($con);  

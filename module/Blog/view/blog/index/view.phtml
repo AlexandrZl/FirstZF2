@@ -4,7 +4,7 @@ print '<div>' . $post['text'] . '</div>';
 print '<li>
         <a href="' . $this->url('blog', array('action'=>'edit', 'id' => $post['id'])) . '">edit</a>,
         <a href="' . $this->url('blog', array('action'=>'delete', 'id' => $post['id'])) . '">delete</a>
-      </li>';    
+      </li>';   
 ?>
 
 <h2><?php echo " Add new comment" ?></h2>
@@ -14,14 +14,14 @@ echo $this->formRow($form->get('comment'));
 echo $this->formSubmit($form->get('submit'));
 ?>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="./js/jquery-1.9.1.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     $("#submitbutton").click(function(){
         $.ajax({
             url: '/ajax/addcomment',
             type : 'POST',
-            data: {"data": $('#comment').val() },
+            data: {data: $('#comment').val(), id: <?php echo $id_comment; ?>},
             dataType : "json",
         });
         $("#response").load('/ajax/addcomment');
