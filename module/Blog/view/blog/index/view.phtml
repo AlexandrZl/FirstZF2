@@ -13,15 +13,16 @@ echo $this->formHidden($form->get('id'));
 echo $this->formRow($form->get('comment'));
 echo $this->formSubmit($form->get('submit'));
 ?>
+<div id = "response"></div>
 
-<script src="./js/jquery-1.9.1.js"></script>
-<script type="text/javascript">
+<script src="./js/jquery-1.9.1.js" ></script>
+<script type="text/javascript" >
 $(document).ready(function(){
     $("#submitbutton").click(function(){
         $.ajax({
             url: '/ajax/addcomment',
             type : 'POST',
-            data: {data: $('#comment').val(), id: <?php echo $id_comment; ?>},
+            data: {comment: $('#comment').val(), id: <?php echo $id_comment; ?>},
             dataType : "json",
         });
         $("#response").load('/ajax/addcomment');
@@ -32,11 +33,10 @@ $(document).ready(function(){
 <h2><?php echo " All Comments" ?></h2>
 
 <?php
+
 foreach($this->comments as $comment) 
 {
-    print $comment['comment'].'<br>';
+    echo json_encode($comment['comment']);
+    echo "<br>";
 }
 ?>
-
-<div id = "response"></div>
-

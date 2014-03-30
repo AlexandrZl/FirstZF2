@@ -8,42 +8,34 @@ use Blog\Form\CommentForm;
 
 class AjaxController extends AbstractActionController
 {
-
-    public function init()
-    {
-        if ($this->getRequest()->isXmlHttpRequest()) {
-            Zend_Controller_Action_HelperBroker::removeHelper('viewRenderer');
-        }
-    }
     public function addcommentAction()
     {
         if ($this->request->isXmlHttpRequest()) 
         {   
-            $comment = $_POST['data'];
-            $id = $_POST['id'];
-            if(isset($comment))
+            $form = new CommentForm();
+            $request = $this->getRequest();
+            if ($request->isPost()) 
             {
-                $con=mysqli_connect("localhost","root","12345","blog");
-                if (mysqli_connect_errno())
-                  {
-                  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                  }
-
-                mysqli_query($con,"INSERT INTO comment (comment, userId)
-                VALUES ( '$comment', '$id')");
-
-                $result = mysqli_query($con,"SELECT * FROM comment");
-                mysqli_close($con);  
+                $form->setData($request->getPost());
+                if ($form->isValid()) 
+                {
+                    $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+                    $comment = new \Blog\Entity\Comment();
+                    $comment->setComment($_POST['comment']);
+                    $objectManager->persist($comment);
+                    $comment->setUserId( $_POST['id']);
+                    $objectManager->flush();
+                }
             }
-
         }
 
         $result = new JsonModel(array(
-        'test' => "Success send comment",
+        'response' => "Success send comment",
             'success'=>true,
         ));  
+
         return array(
             'result' => $result,
-            );
+            );   
     }
 }
