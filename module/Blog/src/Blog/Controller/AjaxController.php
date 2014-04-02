@@ -5,6 +5,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;    
 use Zend\View\Model\JsonModel;
 use Blog\Form\CommentForm;
+use Blog\Form\CommentFilter;  
 
 class AjaxController extends AbstractActionController
 {
@@ -16,21 +17,22 @@ class AjaxController extends AbstractActionController
             $request = $this->getRequest();
             if ($request->isPost()) 
             {
+                $form->setInputFilter(new CommentFilter($this->getServiceLocator()));
                 $form->setData($request->getPost());
                 if ($form->isValid()) 
                 {
                     $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
                     $comment = new \Blog\Entity\Comment();
-                    $comment->setComment($_POST['comment']);
+                    $comment->exchangeArray($form->getData());
                     $objectManager->persist($comment);
-                    $comment->setUserId( $_POST['id']);
+                    $comment->setUserId($_POST['id']);
                     $objectManager->flush();
                 }
             }
         }
 
         $result = new JsonModel(array(
-        'response' => "Success send comment",
+        'response' => "success",
             'success'=>true,
         ));  
 

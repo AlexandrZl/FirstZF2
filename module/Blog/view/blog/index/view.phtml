@@ -13,30 +13,34 @@ echo $this->formHidden($form->get('id'));
 echo $this->formRow($form->get('comment'));
 echo $this->formSubmit($form->get('submit'));
 ?>
-<div id = "response"></div>
-
 <script src="./js/jquery-1.9.1.js" ></script>
 <script type="text/javascript" >
 $(document).ready(function(){
     $("#submitbutton").click(function(){
         $.ajax({
-            url: '/ajax/addcomment',
             type : 'POST',
-            data: {comment: $('#comment').val(), id: <?php echo $id_comment; ?>},
-            dataType : "json",
+            url: '/ajax/addcomment',
+            data: {'comment' : $('#comment').val() , 'id' : <?php echo $id_comment; ?> },
+            dataType : 'json',
+            success: function(data) 
+            {
+              $('#new_comment').html('success');
+            },
+            error: function(request, status, error)
+            {
+              alert("error");
+            } 
         });
-        $("#response").load('/ajax/addcomment');
     })
 })
 </script>
-
 <h2><?php echo " All Comments" ?></h2>
-
 <?php
-
 foreach($this->comments as $comment) 
 {
-    echo json_encode($comment['comment']);
-    echo "<br>";
+    print $comment['comment'].'<br>';
 }
 ?>
+<div id="new_comment">
+ 
+</div>

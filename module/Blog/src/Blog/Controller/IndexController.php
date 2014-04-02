@@ -20,8 +20,7 @@ class IndexController extends AbstractActionController
         if ($request->isPost()) {
             $form->setData($request->getPost());
 
-            if ($form->isValid()) 
-            {
+            if ($form->isValid()) {
                 $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
                 $post = new \Blog\Entity\BlogPost();
                 $post->exchangeArray($form->getData());
