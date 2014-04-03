@@ -32,12 +32,10 @@ class AjaxController extends AbstractActionController
         }
 
         $result = new JsonModel(array(
-        'response' => "success",
+        'response' => $_POST['comment'],
             'success'=>true,
         ));  
 
-        return array(
-            'result' => $result,
-            );   
+        return $result; 
     }
 }
