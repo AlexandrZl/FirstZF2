@@ -19,7 +19,6 @@ class IndexController extends AbstractActionController
         $request = $this->getRequest();
         if ($request->isPost()) {
             $form->setData($request->getPost());
-
             if ($form->isValid()) {
                 $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
                 $post = new \Blog\Entity\BlogPost();
@@ -29,8 +28,7 @@ class IndexController extends AbstractActionController
                 $message = 'Blogpost succesfully saved!';
                 $this->flashMessenger()->addMessage($message);
                 return $this->redirect()->toRoute('blog');
-            }
-            else {
+            } else {
                 $message = 'Error while saving blogpost';
                 $this->flashMessenger()->addErrorMessage($message);
             }
@@ -52,17 +50,12 @@ class IndexController extends AbstractActionController
             $posts_array[] = $post->getArrayCopy();
         }
 
-        $view = new ViewModel(array(
-            'posts' => $posts_array,
-        ));
+        $view = new ViewModel(array('posts' => $posts_array,));
         $auth = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
-        if ($auth->hasIdentity()) 
-        {
+        if ($auth->hasIdentity()) {
             $auth_user = $auth->getIdentity();
         }
-
         return $view;
-
     }
 
     
@@ -75,7 +68,6 @@ class IndexController extends AbstractActionController
             $this->flashMessenger()->addErrorMessage('Blogpost id doesn\'t set');
             return $this->redirect()->toRoute('blog');
         }
-        
         $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
         $post = $objectManager
@@ -90,7 +82,6 @@ class IndexController extends AbstractActionController
         foreach ($comments as $comment) {
             $comments_array[] = $comment->getArrayCopy();
         }
-
         if (!$post) {
             $this->flashMessenger()->addErrorMessage(sprintf('Blogpost with id %s doesn\'t exists', $id));
             return $this->redirect()->toRoute('blog');
@@ -132,14 +123,10 @@ class IndexController extends AbstractActionController
                 $this->flashMessenger()->addErrorMessage(sprintf('Blogpost with id %s doesn\'t exists', $id));
                 return $this->redirect()->toRoute('blog');
             }
-
-
             $form->bind($post);
             return array('form' => $form);
-        }
-        else {
+        } else {
             $form->setData($request->getPost());
-
             if ($form->isValid()) {
                 $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
@@ -163,8 +150,7 @@ class IndexController extends AbstractActionController
                 $this->flashMessenger()->addMessage($message);
 
                 return $this->redirect()->toRoute('blog');
-            }
-            else {
+            } else {
                 $message = 'Error while saving blogpost';
                 $this->flashMessenger()->addErrorMessage($message);
             }
@@ -184,7 +170,6 @@ class IndexController extends AbstractActionController
         $request = $this->getRequest();
         if ($request->isPost()) {
             $del = $request->getPost('del', 'No');
-
             if ($del == 'Yes') {
                 $id = (int) $request->getPost('id');
                 try {

@@ -66,6 +66,9 @@ class AuthController extends AbstractActionController
         {
             $auth_user = $auth->getIdentity();
         }
-        return array('users' => $users, 'auth_user' => $auth_user);
+        return array(
+            'users' => $users,
+            'auth_user' => $auth_user,
+        );
     }
 }

@@ -19,7 +19,7 @@ $(document).ready(function(){
     $("#submitbutton").click(function(){
         $.ajax({
             type : 'POST',
-            url: '/ajax/addcomment',
+            url: '/comment/addcomment',
             data: {"comment" : $('#comment').val() , "id" : <?php echo $id_comment; ?> },
             dataType : 'json',
             success: function(data) 
@@ -35,12 +35,11 @@ $(document).ready(function(){
 })
 </script>
 <h2><?php echo " All Comments" ?></h2>
-<?php
-foreach($this->comments as $comment) 
-{
-    print $comment['comment'].'<br>';
-}
-?>
+
+<?php foreach($this->comments as $comment):?>
+<?php echo $comment['comment']; ?>
+<br>
+<?php endforeach; ?>
+
 <div id="new_comment">
- 
 </div>

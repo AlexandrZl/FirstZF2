@@ -43,12 +43,12 @@ return array(
             'ajax' => array(
                 'type'    => 'segment',
                     'options' => array(
-                    'route' => '/ajax/[:action]',
+                    'route' => '/comment/[:action]',
                     'constraints' => array(
                       'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                     ),
                     'defaults' => array(
-                        'controller' => 'Blog\Controller\Ajax',
+                        'controller' => 'Blog\Controller\Comment',
                         'action'     => 'addcomment',
                     ),
                 ),
@@ -80,9 +80,9 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Blog\Controller\Index' => 'Blog\Controller\IndexController',
-            'Blog\Controller\Auth'  => 'Blog\Controller\AuthController',
-            'Blog\Controller\Ajax'  => 'Blog\Controller\AjaxController'
+            'Blog\Controller\Index'    => 'Blog\Controller\IndexController',
+            'Blog\Controller\Auth'     => 'Blog\Controller\AuthController',
+            'Blog\Controller\Comment'  => 'Blog\Controller\CommentController'
         ),
     ),
     'view_manager' => array(
