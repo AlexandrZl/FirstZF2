@@ -40,7 +40,20 @@ return array(
                     ),
                 ),
             ),
-            'ajax' => array(
+            'oauth' => array(
+                'type'    => 'segment',
+                    'options' => array(
+                    'route' => '/oauth/[:action]',
+                    'constraints' => array(
+                      'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Blog\Controller\Oauth',
+                        'action'     => 'login',
+                    ),
+                ),
+            ),
+            'comment' => array(
                 'type'    => 'segment',
                     'options' => array(
                     'route' => '/comment/[:action]',
@@ -82,7 +95,8 @@ return array(
         'invokables' => array(
             'Blog\Controller\Index'    => 'Blog\Controller\IndexController',
             'Blog\Controller\Auth'     => 'Blog\Controller\AuthController',
-            'Blog\Controller\Comment'  => 'Blog\Controller\CommentController'
+            'Blog\Controller\Oauth'    => 'Blog\Controller\OauthController',
+            'Blog\Controller\Comment'  => 'Blog\Controller\CommentController',
         ),
     ),
     'view_manager' => array(
