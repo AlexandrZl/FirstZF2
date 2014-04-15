@@ -14,5 +14,6 @@
         "doctrine/common": ">=2.1",
         "doctrine/doctrine-orm-module": "0.7.*",
         "zendframework/zendoauth": "2.0.*",
+        "zendframework/zendservice-twitter": "dev-master"
     }
 }
