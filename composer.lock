@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "fd2d4c3074576857e8f120ed98ea18f3",
+    "hash": "cb051c9fd06d0f2f10c588b6506abc44",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -717,6 +717,47 @@
             "time": "2014-02-08 16:35:09"
         },
         {
+            "name": "jvandemo/zendservice-oauth2",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jvandemo/ZendService_Oauth2.git",
+                "reference": "2659de80d6244d84448ff50cf72ed3c1245e4134"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jvandemo/ZendService_Oauth2/zipball/2659de80d6244d84448ff50cf72ed3c1245e4134",
+                "reference": "2659de80d6244d84448ff50cf72ed3c1245e4134",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "zendframework/zend-http": ">=2.0.0",
+                "zendframework/zend-json": ">=2.0.0",
+                "zendframework/zend-uri": ">=2.0.0",
+                "zendframework/zend-version": ">=2.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "ZendService\\Oauth2\\": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Oauth2.0 service for Zend Framework 2",
+            "homepage": "https://github.com/jvandemo/ZendService_Oauth2",
+            "keywords": [
+                "oauth",
+                "oauth2",
+                "oauth20",
+                "zf2"
+            ],
+            "time": "2013-03-07 00:18:32"
+        },
+        {
             "name": "symfony/console",
             "version": "v2.4.3",
             "target-dir": "Symfony/Component/Console",
@@ -777,12 +818,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/ZendDeveloperTools.git",
-                "reference": "763cecf9d68fc0d3765d45847047817a47ecdd4a"
+                "reference": "9f93faecc1c9c31b8af67491f0e706e75b1f85bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/ZendDeveloperTools/zipball/763cecf9d68fc0d3765d45847047817a47ecdd4a",
-                "reference": "763cecf9d68fc0d3765d45847047817a47ecdd4a",
+                "url": "https://api.github.com/repos/zendframework/ZendDeveloperTools/zipball/9f93faecc1c9c31b8af67491f0e706e75b1f85bf",
+                "reference": "9f93faecc1c9c31b8af67491f0e706e75b1f85bf",
                 "shasum": ""
             },
             "require": {
@@ -830,20 +871,20 @@
                 "module",
                 "zf2"
             ],
-            "time": "2014-03-23 05:38:41"
+            "time": "2014-04-16 14:11:24"
         },
         {
             "name": "zendframework/zendframework",
-            "version": "2.2.6",
+            "version": "2.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zf2.git",
-                "reference": "5eae447d46b00a280573b94c398b2f46f45a6903"
+                "reference": "ffca3e3eefd7fbe0f316ed0224edff368949223d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zf2/zipball/5eae447d46b00a280573b94c398b2f46f45a6903",
-                "reference": "5eae447d46b00a280573b94c398b2f46f45a6903",
+                "url": "https://api.github.com/repos/zendframework/zf2/zipball/ffca3e3eefd7fbe0f316ed0224edff368949223d",
+                "reference": "ffca3e3eefd7fbe0f316ed0224edff368949223d",
                 "shasum": ""
             },
             "require": {
@@ -946,7 +987,7 @@
                 "framework",
                 "zf2"
             ],
-            "time": "2014-03-06 17:27:03"
+            "time": "2014-04-15 14:31:59"
         },
         {
             "name": "zendframework/zendoauth",
@@ -1001,12 +1042,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/ZendService_Twitter.git",
-                "reference": "d3fbd18f3c5023d87ec5ee82b341294fa5317e88"
+                "reference": "e5c10ba9867cdc952a2086a3d55b0caf83674b17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/ZendService_Twitter/zipball/d3fbd18f3c5023d87ec5ee82b341294fa5317e88",
-                "reference": "d3fbd18f3c5023d87ec5ee82b341294fa5317e88",
+                "url": "https://api.github.com/repos/zendframework/ZendService_Twitter/zipball/e5c10ba9867cdc952a2086a3d55b0caf83674b17",
+                "reference": "e5c10ba9867cdc952a2086a3d55b0caf83674b17",
                 "shasum": ""
             },
             "require": {
@@ -1043,7 +1084,7 @@
                 "twitter",
                 "zf2"
             ],
-            "time": "2014-01-02 17:26:33"
+            "time": "2014-04-14 21:10:32"
         },
         {
             "name": "zendframework/zendxml",
@@ -1100,7 +1141,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "zendframework/zend-developer-tools": 20,
-        "zendframework/zendservice-twitter": 20
+        "zendframework/zendservice-twitter": 20,
+        "jvandemo/zendservice-oauth2": 20
     },
     "platform": {
         "php": ">=5.3.3"

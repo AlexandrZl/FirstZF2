@@ -49,7 +49,7 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'Blog\Controller\Oauth',
-                        'action'     => 'login',
+                        'action'     => 'index',
                     ),
                 ),
             ),

@@ -7,31 +7,35 @@ use ZendOAuth\Consumer;
 
 class OauthController extends AbstractActionController
 {
-    public function loginAction()
+    public function config()
+    {
+       $configuration = array(
+           'callbackUrl' => 'http://zf-blog/oauth/callback',
+           'siteUrl' => 'http://api.twitter.com/oauth',
+           'consumerKey' => 'KlIlftDYQ8nIRIGbZfe2sVtU8',
+           'consumerSecret' => 'HifE8kMmdcKx3Y9QFXNkkH0HZJDEIuNdzZCz1YPHm3KdXOIIj0'
+       );
+     
+       return $configuration;
+    }
+    public function indexAction()
     {
         ini_set('display_errors',1);
         session_start();
-        $config = array(
-            'callbackUrl' => 'http://zf-blog',
-            'consumerKey' => 'sSQ9DJU4rSBWx6ARQHpgA',
-            'consumerSecret' => 'UsnMpyatd0FmfkWvOof4I6yyMecxlgM9QxzocGDMWA',
-            'requestTokenUrl' => 'http://api.twitter.com/oauth2/request_token',
-            'authorizeUrl' => 'http://api.twitter.com/oauth2/authorize',
-            'accessTokenUrl' => 'http://api.twitter.com/oauth2/access_token',
+        $consumer = new Consumer($this->config());
+        $token = $consumer->getRequestToken();
+        $_SESSION['TWITTER_REQUEST_TOKEN'] = serialize($token);
+        $consumer->redirect();
+    }
+
+    public function callbackAction()
+    {
+        session_start();
+        $consumer = new Consumer($this->config());
+        $token = $consumer->getAccessToken(
+            $_GET,
+            unserialize($_SESSION['TWITTER_REQUEST_TOKEN'])
         );
-        $consumer = new Consumer($config);
-        if (!isset($_SESSION['ACCESS_TOKEN'])) {
-            if (!empty($_GET)) {
-                $token = $consumer->getAccessToken($_GET, unserialize($_SESSION['REQUEST_TOKEN']));
-                $_SESSION['ACCESS_TOKEN'] = serialize($token);
-            } else {
-                $token = $consumer->getRequestToken();
-                $_SESSION['REQUEST_TOKEN'] = serialize($token);
-                $consumer->redirect();
-            }
-        } else {
-            $token = unserialize($_SESSION['ACCESS_TOKEN']);
-            $_SESSION['ACCESS_TOKEN'] = null;
-        }
+        $_SESSION['TWITTER_ACCESS_TOKEN'] = serialize($token);
     }
 }
