@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "cb051c9fd06d0f2f10c588b6506abc44",
+    "hash": "985f66797caf43e31ccb6367bbac1902",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1038,16 +1038,16 @@
         },
         {
             "name": "zendframework/zendservice-twitter",
-            "version": "dev-master",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/ZendService_Twitter.git",
-                "reference": "e5c10ba9867cdc952a2086a3d55b0caf83674b17"
+                "reference": "b3be44fa3f2285e4ee9811ce5c518e3eab020732"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/ZendService_Twitter/zipball/e5c10ba9867cdc952a2086a3d55b0caf83674b17",
-                "reference": "e5c10ba9867cdc952a2086a3d55b0caf83674b17",
+                "url": "https://api.github.com/repos/zendframework/ZendService_Twitter/zipball/b3be44fa3f2285e4ee9811ce5c518e3eab020732",
+                "reference": "b3be44fa3f2285e4ee9811ce5c518e3eab020732",
                 "shasum": ""
             },
             "require": {
@@ -1084,7 +1084,7 @@
                 "twitter",
                 "zf2"
             ],
-            "time": "2014-04-14 21:10:32"
+            "time": "2013-03-13 20:49:31"
         },
         {
             "name": "zendframework/zendxml",
@@ -1141,7 +1141,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "zendframework/zend-developer-tools": 20,
-        "zendframework/zendservice-twitter": 20,
         "jvandemo/zendservice-oauth2": 20
     },
     "platform": {
