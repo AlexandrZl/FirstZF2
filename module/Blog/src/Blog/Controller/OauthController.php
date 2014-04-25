@@ -2,48 +2,38 @@
 namespace Blog\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use ZendOAuth\Consumer;
-use ZendService\Oauth2\Client\Client;
+use League\OAuth2\Client\Provider\Google;
 
 
 class OauthController extends AbstractActionController
 {
     public function config()
     {
-       $configuration = array(
-            'client' => array(
-                'client_id' => '2455247748',
-                'client_secret' => 'HWyEp0m7zAAf1T4IG2yPcO7RoDpWBEqf2myrbMnH9u8a8jOLb9',
-                'authorization_url' => 'https://api.twitter.com/oauth/authorize',
-                'access_token_url' => 'https://api.twitter.com/oauth/access_token',
-                'redirect_uri' => 'http://zf-blog/oauth/callback',
-                'state' => 'somerandomstate',
-            ),
-            'http' => array(
-                'adapter'   => 'Zend\Http\Client\Adapter\Curl',
-                'curloptions' => array(
-                    CURLOPT_FOLLOWLOCATION => true,
-                    CURLOPT_SSL_VERIFYPEER => false,
-                ),
-            ),
+        $configuration = array(
+            'clientId'  =>  '555205517183-0vj2f4g537giasn626kihllqkljtev74.apps.googleusercontent.com',
+            'clientSecret'  =>  'LKqC8sP00InoQBO3wOFukbmf',
+            'redirectUri'   =>  "http://127.0.0.3/oauth/callback",
         );
-     
-       return $configuration;
+        return $configuration;
     }
 
     public function indexAction()
     {
-        $client = new Client($this->config());
-        $url = $client->getAuthorizationRequestUrl();
-        return $this->redirect()->toUrl($url);
+        $provider = new Google($this->config());
+        $provider->authorize();
     }
 
     public function callbackAction()
     {
-        $client = new Client($this->config());
-        $code = $_GET['code'];
-        $accessToken = $client->getAccessToken(array(
-            'code' => $code
-        ));
+        $provider = new Google($this->config());
+        $t = $provider->getAccessToken('authorization_code', array('code' => $_GET['code']));
+        try {
+            $userDetails = $provider->getUserDetails($t);
+        } catch (Exception $e) {
+            die("Failed to get user details");
+            }
+        return array(
+            'user' => $userDetails,
+        );
     }
 }
