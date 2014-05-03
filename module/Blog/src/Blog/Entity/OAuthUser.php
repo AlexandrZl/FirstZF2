@@ -8,9 +8,9 @@ use Doctrine\Common\Collections\Collection;
 
 /**
  * @ORM\Entity 
- * @ORM\Table(name="user")
+ * @ORM\Table(name="users")
  */
-class User
+class OAuthUser
 {
 
  /**
@@ -25,7 +25,7 @@ class User
      * @var string
      * @ORM\Column(type="string", length=255, nullable=false)
      */
-    protected $password;
+    protected $name;
 
     /**
      * @var text
@@ -36,26 +36,26 @@ class User
 
 
     /**
-     * Set Password
+     * Set name
      *
-     * @param string $password
+     * @param string $name
      * @return void
      */
-    public function setPassword($password)
+    public function setName($name)
     {
-        $this->password = $password;
+        $this->name = $name;
     
         return $this;
     }
 
     /**
-     * Get Password
+     * Get name
      *
      * @return string 
      */
-    public function getPassword()
+    public function getName()
     {
-        return $this->password;
+        return $this->name;
     }
 
     /**

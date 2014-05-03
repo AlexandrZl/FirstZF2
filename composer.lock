@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "511dd950256ca0cd09b34a63aaad842a",
+    "hash": "fae868bfcfa4f37a8f5703a9677863a2",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -64,7 +64,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -118,7 +118,7 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Wage",
+                    "name": "Jonathan H. Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/",
                     "role": "Creator"
@@ -718,22 +718,22 @@
         },
         {
             "name": "guzzle/guzzle",
-            "version": "v3.8.1",
+            "version": "v3.9.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba"
+                "url": "https://github.com/guzzle/guzzle3.git",
+                "reference": "e4d12d7d6acccf75a5e504114e2df9195e494108"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
-                "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
+                "url": "https://api.github.com/repos/guzzle/guzzle3/zipball/e4d12d7d6acccf75a5e504114e2df9195e494108",
+                "reference": "e4d12d7d6acccf75a5e504114e2df9195e494108",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
                 "php": ">=5.3.3",
-                "symfony/event-dispatcher": ">=2.1"
+                "symfony/event-dispatcher": "~2.1"
             },
             "replace": {
                 "guzzle/batch": "self.version",
@@ -760,13 +760,13 @@
                 "guzzle/stream": "self.version"
             },
             "require-dev": {
-                "doctrine/cache": "*",
-                "monolog/monolog": "1.*",
+                "doctrine/cache": "~1.3",
+                "monolog/monolog": "~1.0",
                 "phpunit/phpunit": "3.7.*",
-                "psr/log": "1.0.*",
-                "symfony/class-loader": "*",
-                "zendframework/zend-cache": "<2.3",
-                "zendframework/zend-log": "<2.3"
+                "psr/log": "~1.0",
+                "symfony/class-loader": "~2.1",
+                "zendframework/zend-cache": "2.*,<2.3",
+                "zendframework/zend-log": "2.*,<2.3"
             },
             "type": "library",
             "extra": {
@@ -806,7 +806,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2014-01-28 22:29:15"
+            "time": "2014-04-23 21:43:40"
         },
         {
             "name": "ivan-novakov/php-openid-connect-client",
@@ -905,16 +905,16 @@
         },
         {
             "name": "league/oauth2-client",
-            "version": "dev-master",
+            "version": "0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth2-client.git",
-                "reference": "2dde0d98f98a242a681a5cdfa354331fe2832d5f"
+                "reference": "c55e663200cb1fbbd48356b6e024dd0c1b09c2cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth2-client/zipball/2dde0d98f98a242a681a5cdfa354331fe2832d5f",
-                "reference": "2dde0d98f98a242a681a5cdfa354331fe2832d5f",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-client/zipball/c55e663200cb1fbbd48356b6e024dd0c1b09c2cc",
+                "reference": "c55e663200cb1fbbd48356b6e024dd0c1b09c2cc",
                 "shasum": ""
             },
             "require": {
@@ -928,7 +928,7 @@
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "League\\OAuth2\\Client": "src/"
+                    "OAuth2": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -944,6 +944,7 @@
                 }
             ],
             "description": "OAuth 2.0 Client Library",
+            "homepage": "https://github.com/lncd/OAuth2-Client",
             "keywords": [
                 "Authentication",
                 "SSO",
@@ -954,21 +955,68 @@
                 "oauth2",
                 "single sign on"
             ],
-            "time": "2014-04-21 17:29:46"
+            "time": "2013-03-25 12:59:50"
+        },
+        {
+            "name": "silvester/reverse-oauth2",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silvester/ReverseOAuth2.git",
+                "reference": "38eb213549787bb0aff315ce2c0fbb5ac8a930b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silvester/ReverseOAuth2/zipball/38eb213549787bb0aff315ce2c0fbb5ac8a930b6",
+                "reference": "38eb213549787bb0aff315ce2c0fbb5ac8a930b6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "zendframework/zendframework": "2.*"
+            },
+            "type": "module",
+            "autoload": {
+                "psr-0": {
+                    "ReverseOAuth2": "src/"
+                },
+                "classmap": [
+                    "./Module.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Silvester Maraz",
+                    "email": "silvester.maraz@reverse.si",
+                    "homepage": "http://maraz.org"
+                }
+            ],
+            "description": "Oauth2 client for zf2. Facebook, github and google is supported.",
+            "homepage": "https://github.com/silvester/ReverseOAuth2",
+            "keywords": [
+                "module",
+                "oauth2",
+                "zf2"
+            ],
+            "time": "2013-05-10 07:59:27"
         },
         {
             "name": "symfony/console",
-            "version": "v2.4.3",
+            "version": "v2.4.4",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "ef20f1f58d7f693ee888353962bd2db336e3bbcb"
+                "reference": "2e452005b1e1d003d23702d227e23614679eb5ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/ef20f1f58d7f693ee888353962bd2db336e3bbcb",
-                "reference": "ef20f1f58d7f693ee888353962bd2db336e3bbcb",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/2e452005b1e1d003d23702d227e23614679eb5ca",
+                "reference": "2e452005b1e1d003d23702d227e23614679eb5ca",
                 "shasum": ""
             },
             "require": {
@@ -1009,21 +1057,21 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-03-01 17:35:04"
+            "time": "2014-04-27 13:34:57"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.4.3",
+            "version": "v2.4.4",
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "4708b8cd41984a5ba29fe7dd40716f7f761ac501"
+                "reference": "e539602e5455aa086c0e81e604745af7789e4d8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/4708b8cd41984a5ba29fe7dd40716f7f761ac501",
-                "reference": "4708b8cd41984a5ba29fe7dd40716f7f761ac501",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/e539602e5455aa086c0e81e604745af7789e4d8a",
+                "reference": "e539602e5455aa086c0e81e604745af7789e4d8a",
                 "shasum": ""
             },
             "require": {
@@ -1065,7 +1113,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2014-02-11 13:52:09"
+            "time": "2014-04-16 10:34:31"
         },
         {
             "name": "zendframework/zend-developer-tools",
@@ -1073,12 +1121,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/ZendDeveloperTools.git",
-                "reference": "9f93faecc1c9c31b8af67491f0e706e75b1f85bf"
+                "reference": "26af0e670ee7e94bd114b33ce022d5d646fb8117"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/ZendDeveloperTools/zipball/9f93faecc1c9c31b8af67491f0e706e75b1f85bf",
-                "reference": "9f93faecc1c9c31b8af67491f0e706e75b1f85bf",
+                "url": "https://api.github.com/repos/zendframework/ZendDeveloperTools/zipball/26af0e670ee7e94bd114b33ce022d5d646fb8117",
+                "reference": "26af0e670ee7e94bd114b33ce022d5d646fb8117",
                 "shasum": ""
             },
             "require": {
@@ -1126,24 +1174,24 @@
                 "module",
                 "zf2"
             ],
-            "time": "2014-04-16 14:11:24"
+            "time": "2014-04-28 13:31:11"
         },
         {
             "name": "zendframework/zendframework",
-            "version": "2.2.7",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zf2.git",
-                "reference": "ffca3e3eefd7fbe0f316ed0224edff368949223d"
+                "reference": "055eac4314425c291f3ef0e104a6196a8fc24cd5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zf2/zipball/ffca3e3eefd7fbe0f316ed0224edff368949223d",
-                "reference": "ffca3e3eefd7fbe0f316ed0224edff368949223d",
+                "url": "https://api.github.com/repos/zendframework/zf2/zipball/055eac4314425c291f3ef0e104a6196a8fc24cd5",
+                "reference": "055eac4314425c291f3ef0e104a6196a8fc24cd5",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3",
+                "php": ">=5.3.23",
                 "zendframework/zendxml": "~1.0-dev"
             },
             "replace": {
@@ -1204,14 +1252,16 @@
                 "fabpot/php-cs-fixer": "*@dev",
                 "ircmaxell/random-lib": "dev-master",
                 "ircmaxell/security-lib": "dev-master",
-                "ocramius/proxy-manager": "0.4.*",
-                "phpunit/phpunit": "3.7.*"
+                "mikey179/vfsstream": "1.2.*",
+                "phpunit/phpunit": "3.7.*",
+                "satooshi/php-coveralls": "dev-master",
+                "sebastianbergmann/phpcov": "1.1.0"
             },
             "suggest": {
                 "doctrine/annotations": "Doctrine Annotations >=1.0 for annotation features",
                 "ext-intl": "ext/intl for i18n features (included in default builds of PHP)",
                 "ircmaxell/random-lib": "Fallback random byte generator for Zend\\Math\\Rand if OpenSSL/Mcrypt extensions are unavailable",
-                "ocramius/proxy-manager": "ProxyManager to handle lazy initialization of services",
+                "ocramius/proxy-manager": "ProxyManager 0.5.* to handle lazy initialization of services",
                 "zendframework/zendpdf": "ZendPdf for creating PDF representations of barcodes",
                 "zendframework/zendservice-recaptcha": "ZendService\\ReCaptcha for rendering ReCaptchas in Zend\\Captcha and/or Zend\\Form"
             },
@@ -1223,8 +1273,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev",
-                    "dev-develop": "2.3-dev"
+                    "dev-master": "2.3-dev",
+                    "dev-develop": "2.4-dev"
                 }
             },
             "autoload": {
@@ -1242,104 +1292,7 @@
                 "framework",
                 "zf2"
             ],
-            "time": "2014-04-15 14:31:59"
-        },
-        {
-            "name": "zendframework/zendoauth",
-            "version": "2.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/ZendOAuth.git",
-                "reference": "0d068773448dd224583aa07b0a16349613bd9b8d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/ZendOAuth/zipball/0d068773448dd224583aa07b0a16349613bd9b8d",
-                "reference": "0d068773448dd224583aa07b0a16349613bd9b8d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "zendframework/zend-config": ">=2.0.0",
-                "zendframework/zend-crypt": ">=2.0.0",
-                "zendframework/zend-http": ">=2.0.0",
-                "zendframework/zend-i18n": ">=2.0.0",
-                "zendframework/zend-loader": ">=2.0.0",
-                "zendframework/zend-math": ">=2.0.0",
-                "zendframework/zend-stdlib": ">=2.0.0",
-                "zendframework/zend-uri": ">=2.0.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "ZendOAuth": "library/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "homepage": "http://packages.zendframework.com/",
-            "keywords": [
-                "oauth",
-                "zf2"
-            ],
-            "time": "2013-06-10 21:09:59"
-        },
-        {
-            "name": "zendframework/zendservice-twitter",
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/ZendService_Twitter.git",
-                "reference": "b3be44fa3f2285e4ee9811ce5c518e3eab020732"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/ZendService_Twitter/zipball/b3be44fa3f2285e4ee9811ce5c518e3eab020732",
-                "reference": "b3be44fa3f2285e4ee9811ce5c518e3eab020732",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "zendframework/zend-feed": ">=2.0.0",
-                "zendframework/zend-http": ">=2.0.0",
-                "zendframework/zend-json": ">=2.0.0",
-                "zendframework/zend-stdlib": ">=2.0.0",
-                "zendframework/zend-uri": ">=2.0.0",
-                "zendframework/zendoauth": ">=2.0.0"
-            },
-            "require-dev": {
-                "zendframework/zend-config": ">=2.0.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev",
-                    "dev-develop": "2.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "ZendService\\Twitter\\": "library/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "OOP wrapper for the Twitter web service",
-            "homepage": "http://packages.zendframework.com/",
-            "keywords": [
-                "twitter",
-                "zf2"
-            ],
-            "time": "2013-03-13 20:49:31"
+            "time": "2014-04-15 14:47:18"
         },
         {
             "name": "zendframework/zendxml",
@@ -1397,8 +1350,8 @@
     "stability-flags": {
         "zendframework/zend-developer-tools": 20,
         "jvandemo/zendservice-oauth2": 20,
-        "league/oauth2-client": 20,
-        "ivan-novakov/php-openid-connect-client": 20
+        "ivan-novakov/php-openid-connect-client": 20,
+        "silvester/reverse-oauth2": 20
     },
     "platform": {
         "php": ">=5.3.3"

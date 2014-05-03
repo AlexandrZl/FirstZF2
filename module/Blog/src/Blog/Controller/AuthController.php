@@ -58,7 +58,7 @@ class AuthController extends AbstractActionController
     {
         $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
         $users = $em
-            ->getRepository('Blog\Entity\User')
+            ->getRepository('Blog\Entity\OAuthUser')
             ->findAll();
 
         $auth = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
