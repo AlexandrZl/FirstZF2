@@ -14,6 +14,11 @@ class AuthController extends AbstractActionController
     {
         $form = new AuthForm();
         $form->get('submit')->setValue('Login');
+        $auth = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
+        if ($auth->hasIdentity()) 
+        {
+            return $this->redirect()->toRoute('auth', array('controller' => 'auth', 'action' => 'index'));
+        }   
         $request = $this->getRequest();
         if ($request->isPost()) 
         {
@@ -22,7 +27,7 @@ class AuthController extends AbstractActionController
             if ($form->isValid()) 
             {
                 $data = $form->getData();
-                $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
+                //$authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
                 $adapter = $authService->getAdapter();
                 $adapter->setIdentityValue($data['email']); 
                 $adapter->setCredentialValue($data['password']); 

@@ -35,16 +35,10 @@ class OauthController extends AbstractActionController
         } catch (Exception $exeption) {
             die("Failed to get user details");
             }
-
-
-        $auth = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
-        if ($auth->hasIdentity()) 
-        {
-           $this->redirect()->toRoute('home');
-        }
-
-        $data['email'] = $userDetails->email;
-        $data['name'] = $userDetails->name;
+        $data = array(
+                "name"  => $userDetails->name,
+                "email" => $userDetails->email,
+            );
         $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
         $users = $objectManager
             ->getRepository('\Blog\Entity\OAuthUser')
@@ -55,14 +49,28 @@ class OauthController extends AbstractActionController
             $post->exchangeArray($data);
             $objectManager->persist($post);
             $objectManager->flush();
-            return $this->redirect()->toRoute('auth', array('controller' => 'auth', 'action' => 'index'));
+            $message = 'You have successfully authenticated and authorized';
+            $this->flashMessenger()->addMessage($message);
         } else{
-            $message = "Such user exist!";
-            $this->flashMessenger()->addErrorMessage($message);
+            $message = 'You have successfully authenticated';
+            $this->flashMessenger()->addMessage($message);          
         }
-
-        return array(
-            'user' => $userDetails,
-        );
+        $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
+        $adapter = $authService->getAdapter();
+        $adapter->setIdentityValue($userDetails->email); 
+        $adapter->setCredentialValue($userDetails->name); 
+        $authResult = $authService->authenticate();  
+        if ($authResult->isValid()) 
+        {
+            $identity = $authResult->getIdentity();
+            $authService->getStorage()->write($identity);
+            return $this->redirect()->toRoute('auth', array('controller' => 'auth', 'action' => 'index'));
+        }
+        else {
+            return $this->redirect()->toRoute('blog');
+        }
     }
 }
+
+
+

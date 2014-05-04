@@ -152,22 +152,30 @@ return array(
                 )
             )
         ),
+        // 'authentication'    => array(
+        //     'orm_default' => array(
+        //     'object_manager' => 'Doctrine\ORM\EntityManager',
+        //     'identity_class' => 'Blog\Entity\User',
+        //     'identity_property' => 'email',
+        //     'credential_property' => 'password',
+        //     'credential_callable' => function(Blog\Entity\User $user, $passwordGiven) { 
+        //             if ($user->getPassword() == md5($passwordGiven."salt")) 
+        //             {
+        //                 return true;
+        //             }
+        //             else 
+        //             {
+        //                 return false;
+        //             }
+        //     },
+        //     ),
+        // ),
         'authentication'    => array(
             'orm_default' => array(
             'object_manager' => 'Doctrine\ORM\EntityManager',
-            'identity_class' => 'Blog\Entity\User',
+            'identity_class' => 'Blog\Entity\OAuthUser',
             'identity_property' => 'email',
-            'credential_property' => 'password',
-            'credential_callable' => function(Blog\Entity\User $user, $passwordGiven) { 
-                    if ($user->getPassword() == md5($passwordGiven."salt")) 
-                    {
-                        return true;
-                    }
-                    else 
-                    {
-                        return false;
-                    }
-            },
+            'credential_property' => 'name',
             ),
         ),
     ),
