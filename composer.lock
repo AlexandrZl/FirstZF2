@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "fae868bfcfa4f37a8f5703a9677863a2",
+    "hash": "3ad4e884c689e4bf7b4229f7f061b693",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -905,30 +905,36 @@
         },
         {
             "name": "league/oauth2-client",
-            "version": "0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth2-client.git",
-                "reference": "c55e663200cb1fbbd48356b6e024dd0c1b09c2cc"
+                "reference": "424b15d4a807c095ef7af42659cffdbf2a2f1eb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth2-client/zipball/c55e663200cb1fbbd48356b6e024dd0c1b09c2cc",
-                "reference": "c55e663200cb1fbbd48356b6e024dd0c1b09c2cc",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-client/zipball/424b15d4a807c095ef7af42659cffdbf2a2f1eb6",
+                "reference": "424b15d4a807c095ef7af42659cffdbf2a2f1eb6",
                 "shasum": ""
             },
             "require": {
-                "guzzle/guzzle": "*",
+                "guzzle/guzzle": "~3.7",
                 "php": ">=5.3.0"
             },
             "require-dev": {
-                "fzaninotto/faker": "*",
-                "phpunit/phpunit": "*"
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.3-dev"
+                }
+            },
             "autoload": {
-                "psr-0": {
-                    "OAuth2": "src/"
+                "psr-4": {
+                    "League\\OAuth2\\Client\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -944,7 +950,6 @@
                 }
             ],
             "description": "OAuth 2.0 Client Library",
-            "homepage": "https://github.com/lncd/OAuth2-Client",
             "keywords": [
                 "Authentication",
                 "SSO",
@@ -955,7 +960,7 @@
                 "oauth2",
                 "single sign on"
             ],
-            "time": "2013-03-25 12:59:50"
+            "time": "2014-05-03 10:55:30"
         },
         {
             "name": "silvester/reverse-oauth2",
@@ -1350,6 +1355,7 @@
     "stability-flags": {
         "zendframework/zend-developer-tools": 20,
         "jvandemo/zendservice-oauth2": 20,
+        "league/oauth2-client": 20,
         "ivan-novakov/php-openid-connect-client": 20,
         "silvester/reverse-oauth2": 20
     },

@@ -2,8 +2,7 @@
 namespace Blog\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use OAuth2\Client\Provider\Google;
-use Blog\Form\RegistrationForm;
+use League\OAuth2\Client\Provider\Google;
 use Blog\Entity\OAuthUser;
 
 
@@ -12,8 +11,8 @@ class OauthController extends AbstractActionController
     public function config()
     {
         $configuration = array(
-            'clientId'  =>  '555205517183-0vj2f4g537giasn626kihllqkljtev74.apps.googleusercontent.com',
-            'clientSecret'  =>  'LKqC8sP00InoQBO3wOFukbmf',
+            'clientId'  =>  'xxxxxx',
+            'clientSecret'  =>  'xxxxx',
             'redirectUri'   =>  "http://127.0.0.3/oauth/callback",
         );
         return $configuration;
@@ -27,7 +26,6 @@ class OauthController extends AbstractActionController
 
     public function callbackAction()
     {
-        ini_set('display_errors',1);
         $provider = new Google($this->config());
         $token = $provider->getAccessToken('authorization_code', array('code' => $_GET['code']));
         try {
