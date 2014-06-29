@@ -13,9 +13,6 @@
         "zendframework/zend-developer-tools": "dev-master",
         "doctrine/common": ">=2.1",
         "doctrine/doctrine-orm-module": "0.7.*",
-        "jvandemo/zendservice-oauth2" : "dev-master",
-        "league/oauth2-client": "dev-master",
-        "ivan-novakov/php-openid-connect-client": "dev-master",
-        "silvester/reverse-oauth2": "dev-master"
+        "league/oauth2-client": "dev-master"
     }
 }

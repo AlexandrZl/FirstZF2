@@ -1,0 +1,8 @@
+<?php
+  $title = "Oauth 2 - Google, Facebook";
+  $this->headTitle($title);
+?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<a href="<?php echo $this->url('oauth', array('controller' => 'oauth', 'action' => 'google'));?>"><?php echo $this->translate('Login with Google'); ?><br></a>
+<a href="<?php echo $this->url('oauth', array('controller' => 'oauth', 'action' => 'facebook'));?>"><?php echo $this->translate('Login with Facebook'); ?><br></a>     

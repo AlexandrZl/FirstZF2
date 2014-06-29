@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "3ad4e884c689e4bf7b4229f7f061b693",
+    "hash": "909f9d5a5ec3be50cac8624b01753840",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -809,101 +809,6 @@
             "time": "2014-04-23 21:43:40"
         },
         {
-            "name": "ivan-novakov/php-openid-connect-client",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ivan-novakov/php-openid-connect-client.git",
-                "reference": "f185c499870af68fb0b26948cdd750fdae2e716f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ivan-novakov/php-openid-connect-client/zipball/f185c499870af68fb0b26948cdd750fdae2e716f",
-                "reference": "f185c499870af68fb0b26948cdd750fdae2e716f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "zendframework/zend-crypt": ">=2.2.1",
-                "zendframework/zend-eventmanager": ">=2.2.1",
-                "zendframework/zend-filter": ">=2.2.1",
-                "zendframework/zend-http": ">=2.2.1",
-                "zendframework/zend-json": ">=2.2.1",
-                "zendframework/zend-session": ">=2.2.1",
-                "zendframework/zend-stdlib": ">=2.2.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "InoOicClient\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Novakov",
-                    "homepage": "http://novakov.cz/"
-                }
-            ],
-            "description": "OAuth2/OpenID Connect client library",
-            "homepage": "https://github.com/ivan-novakov/php-openid-connect-client",
-            "keywords": [
-                "Authentication",
-                "OpenID Connect",
-                "Zend Framework",
-                "authorization",
-                "client",
-                "library",
-                "oauth2",
-                "zf2"
-            ],
-            "time": "2013-11-30 15:23:42"
-        },
-        {
-            "name": "jvandemo/zendservice-oauth2",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jvandemo/ZendService_Oauth2.git",
-                "reference": "2659de80d6244d84448ff50cf72ed3c1245e4134"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jvandemo/ZendService_Oauth2/zipball/2659de80d6244d84448ff50cf72ed3c1245e4134",
-                "reference": "2659de80d6244d84448ff50cf72ed3c1245e4134",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "zendframework/zend-http": ">=2.0.0",
-                "zendframework/zend-json": ">=2.0.0",
-                "zendframework/zend-uri": ">=2.0.0",
-                "zendframework/zend-version": ">=2.0.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "ZendService\\Oauth2\\": "library/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Oauth2.0 service for Zend Framework 2",
-            "homepage": "https://github.com/jvandemo/ZendService_Oauth2",
-            "keywords": [
-                "oauth",
-                "oauth2",
-                "oauth20",
-                "zf2"
-            ],
-            "time": "2013-03-07 00:18:32"
-        },
-        {
             "name": "league/oauth2-client",
             "version": "dev-master",
             "source": {
@@ -961,53 +866,6 @@
                 "single sign on"
             ],
             "time": "2014-05-03 10:55:30"
-        },
-        {
-            "name": "silvester/reverse-oauth2",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/silvester/ReverseOAuth2.git",
-                "reference": "38eb213549787bb0aff315ce2c0fbb5ac8a930b6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/silvester/ReverseOAuth2/zipball/38eb213549787bb0aff315ce2c0fbb5ac8a930b6",
-                "reference": "38eb213549787bb0aff315ce2c0fbb5ac8a930b6",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "zendframework/zendframework": "2.*"
-            },
-            "type": "module",
-            "autoload": {
-                "psr-0": {
-                    "ReverseOAuth2": "src/"
-                },
-                "classmap": [
-                    "./Module.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Silvester Maraz",
-                    "email": "silvester.maraz@reverse.si",
-                    "homepage": "http://maraz.org"
-                }
-            ],
-            "description": "Oauth2 client for zf2. Facebook, github and google is supported.",
-            "homepage": "https://github.com/silvester/ReverseOAuth2",
-            "keywords": [
-                "module",
-                "oauth2",
-                "zf2"
-            ],
-            "time": "2013-05-10 07:59:27"
         },
         {
             "name": "symfony/console",
@@ -1354,10 +1212,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "zendframework/zend-developer-tools": 20,
-        "jvandemo/zendservice-oauth2": 20,
-        "league/oauth2-client": 20,
-        "ivan-novakov/php-openid-connect-client": 20,
-        "silvester/reverse-oauth2": 20
+        "league/oauth2-client": 20
     },
     "platform": {
         "php": ">=5.3.3"

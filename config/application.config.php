@@ -6,6 +6,7 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         'Migration',
+        'Backend',
     ),
     'module_listener_options' => array(
         'module_paths' => array(
