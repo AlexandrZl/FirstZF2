@@ -6,7 +6,10 @@ return array(
             'backend' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route'    => '/backend',
+                    'route'    => '/backend/[:action]',
+                    'constraints' => array(
+                      'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
                     'defaults' => array(
                         'controller' => 'Backend\Controller\Index',
                         'action'     => 'index',

@@ -16,4 +16,10 @@ class IndexController extends AbstractActionController
         return array('test' => $test);
     }
 
+    public function testAction()
+    {
+    	$test = "Test from test";
+        return array('test' => $test);
+    }
+
 }
