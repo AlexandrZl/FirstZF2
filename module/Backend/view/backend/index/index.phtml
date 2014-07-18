@@ -1,2 +1,29 @@
 <?php
 echo $this->test;
+
+echo $this->formSubmit($form->get('submit'));?>
+
+
+<script src="./js/jquery-1.9.1.js" ></script>
+<script type="text/javascript" >
+$(document).ready(function(){
+    $("#submitbutton").click(function(){
+        $.ajax({
+            type : 'POST',
+            url: '/backend/index/test',
+            dataType : 'json',
+            success: function(data) 
+            {
+              $('#test').text(data.response);
+            },
+            error: function(request, status, error)
+            {
+              $('#test').text(status);
+            } 
+        });
+    })
+})
+</script>
+
+<div id="test">
+</div>

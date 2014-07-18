@@ -70,7 +70,7 @@ return array(
     ),
     'db' => array(
         'driver' => 'Pdo',
-        'dsn' => 'mysql:dbname=blog;host=localhost',
+        'dsn' => 'mysql:dbname=test;host=localhost',
     ),
     'service_manager' => array(
         'abstract_factories' => array(

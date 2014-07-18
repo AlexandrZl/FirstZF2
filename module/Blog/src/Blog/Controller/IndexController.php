@@ -9,8 +9,18 @@ use Blog\Entity;
 use Blog\Form\CommentFilter;
 use Zend\View\Model\JsonModel;
 
+
 class IndexController extends AbstractActionController
 {
+
+
+    public function testAction()
+    {
+        ini_set('display_errors',1);
+        $message = $this->params()->fromRoute('message' , 'MESSAGE FROM ROUTE');
+
+        return new ViewModel(array('message' => $message));
+    }
 
     public function addAction()
     {

@@ -1,0 +1,30 @@
+<?php
+echo $message = $this->message;?><br><?php
+class First 
+{
+    public function __construct(Second $value){
+        $this->first = $value;
+    }
+}
+class Second 
+{
+    public function __construct(Third $value){
+        $this->second = $value;
+    }
+    public function get(){
+        echo "YES!";
+    }
+}
+class Third
+{
+    public function get(){
+        echo "No!";
+    }
+}
+
+
+
+$di = new Zend\Di\Di;
+$test = $di->get("First");
+$test->first->get();
+$test->first->second->get();
